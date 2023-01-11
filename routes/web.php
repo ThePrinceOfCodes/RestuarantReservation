@@ -1,8 +1,12 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\TableController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +36,11 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth','admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::resource('/categories', CategoryController::class);
+    Route::resource('/menus', MenuController::class);
+    Route::resource('/tables', TableController::class);
+    Route::resource('/reservations', ReservationController::class);
+
 });
 
 require __DIR__.'/auth.php';
