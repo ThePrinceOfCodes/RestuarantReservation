@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-right m-2 p-2">
-                <a href="{{ route('admin.categories.index')}}" class="px-4 py-2 bg-indigo-300 hover:bg-indigo-500 rounded-lg text-gray hover:text-white" > All Categories</a>
+                <a href="{{ route('admin.tables.index')}}" class="px-4 py-2 bg-indigo-300 hover:bg-indigo-500 rounded-lg text-gray hover:text-white" > All Tables</a>
             </div>
             <div class="m-2 p-2 bg-slate-100 rounded">
             <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
