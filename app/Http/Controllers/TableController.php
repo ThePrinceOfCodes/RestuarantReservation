@@ -40,6 +40,13 @@ class TableController extends Controller
     public function store(Request $request)
     {
         //
+       Table::create([
+            'location' => $request->location,
+            'name' => $request->name,
+            'guest_number' => $request->guest_number,
+        ]);
+
+        return to_route(('admin.tables.index'));
     }
 
     /**

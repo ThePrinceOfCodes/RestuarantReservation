@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryStoreRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -36,9 +37,18 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
         //
+        $image = $request->file('image')->store('public/categories/img');
+
+        Category::create([
+            'image' => $image,
+            'description' => $request->description,
+            'name' => $request->name
+        ]);
+
+        return to_route(('admin.categories.index'));
     }
 
     /**
