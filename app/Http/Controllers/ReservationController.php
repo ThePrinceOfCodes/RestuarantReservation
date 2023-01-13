@@ -43,15 +43,7 @@ class ReservationController extends Controller
     public function store(ReservationStoreRequest $request)
     {
         //
-        Reservation::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'tel_number' => $request->tel_number,
-            'res_date' => $request->res_date,
-            'table_id' => $request->table_id,
-            'guest_number' => $request->guest_number
-        ]);
+        Reservation::create($request->validated());
 
         return to_route(('admin.reservations.index'));
     }
@@ -76,6 +68,8 @@ class ReservationController extends Controller
     public function edit(Reservation $reservation)
     {
         //
+        $tables = Table::all();
+        return view('admin.reservations.edit', compact('reservation','tables'));
     }
 
     /**
@@ -99,5 +93,7 @@ class ReservationController extends Controller
     public function destroy(Reservation $reservation)
     {
         //
+        $reservation->delete();
+        return view('admin.reservations.index');
     }
 }
