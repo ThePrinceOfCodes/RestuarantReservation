@@ -48,7 +48,7 @@ class TableController extends Controller
             'guest_number' => $request->guest_number,
         ]);
 
-        return to_route(('admin.tables.index'));
+        return to_route(('admin.tables.index'))->with('success','Table created successfully');
     }
 
     /**
@@ -91,7 +91,7 @@ class TableController extends Controller
             'location' => $request->location
         ]);
 
-        return to_route(('admin.tables.index'));
+        return to_route(('admin.tables.index'))->with('success','Table updated successfully');
     }
 
     /**
@@ -104,7 +104,7 @@ class TableController extends Controller
     {
         //
         $table->delete();
-        return to_route(('admin.tables.index'));
+        return to_route(('admin.tables.index'))->with('danger','table deleted successfully');
 
     }
 }
