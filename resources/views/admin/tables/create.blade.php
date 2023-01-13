@@ -15,19 +15,28 @@
                 <form  method="POST" action="{{ route('admin.tables.store')}}">
                     @csrf
                     <div class="sm:col-span-6">
+                    @error('name')
+                        <div class="text-sm text-red-500">{{ $message }}</div>
+                    @enderror
                     <label for="name" class="block text-sm font-medium text-gray-700"> Name </label> 
                     <div class="mt-1">
                         <input type="text" id="name" name="name" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                     </div>
                     </div>
                     <div class="sm:col-span-6">
+                    @error('guest_number')
+                        <div class="text-sm text-red-500">{{ $message }}</div>
+                    @enderror
                     <label for="guest_number" class="block text-sm font-medium text-gray-700"> Guest Number</label>
                     <div class="mt-1">
                         <input type="number" id="guest_number" name="guest_number" class="block w-full transition duration-150 ease-in-out appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                     </div>
                     </div>
                     <div class="sm:col-span-6 pt-5">
-                    <label for="description" class="block text-sm font-medium text-gray-700">Status</label>
+                    <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                    @error('status')
+                        <div class="text-sm text-red-500">{{ $message }}</div>
+                    @enderror
                     <div class="mt-1">
                         <select name="status" class="form block w-full mt-1">
                             @foreach (App\Enums\TableStatus::cases() as $status)
@@ -39,6 +48,9 @@
                     </div>
                     </div>
                     <div class="sm:col-span-6 pt-5">
+                    @error('description')
+                        <div class="text-sm text-red-500">{{ $message }}</div>
+                    @enderror
                     <label for="description" class="block text-sm font-medium text-gray-700">Location</label>
                     <div class="mt-1">
                         <select name="location" class="form block w-full mt-1 ">
