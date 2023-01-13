@@ -41,7 +41,7 @@
                     <div class="sm:col-span-6 pt-5">
                     <label for="description" class="block text-sm font-medium text-gray-700">Categories</label>
                     <div class="mt-1">
-                        <select multiple name="categories">
+                        <select multiple name="categories[]" class="form-multiselect block w-full mt-1">
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">
                                     {{ $category->name }}
