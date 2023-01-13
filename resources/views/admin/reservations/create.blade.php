@@ -41,7 +41,7 @@
                     <div class="sm:col-span-6 pt-5">
                     <label for="description" class="block text-sm font-medium text-gray-700">Table Number</label>
                     <div class="mt-1">
-                        <select name="tables" class="form block w-full mt-1">
+                        <select name="table_id" class="form block w-full mt-1">
                             @foreach ($tables as $table)
                                 <option value="{{ $table->id }}">
                                     {{ $table->name }}

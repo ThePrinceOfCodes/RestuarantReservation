@@ -10,10 +10,11 @@
             <div class="flex justify-end m-2 p-2">
                 <a href="{{ route('admin.reservations.create')}}" class="px-4 py-2 bg-indigo-300 hover:bg-indigo-500 rounded-lg text-gray hover:text-white" > New Reservation</a>
             </div>
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900"> 
-                    <div class="relative overflow-x-auto">
-                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <div class="flex flex-col">
+                <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
+                <div class="overflow-hidden shadow-md sm:rounded-lg"> 
+                        <table class="min-w-full">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" class="px-6 py-3">
@@ -78,9 +79,11 @@
                                 @endforeach                                                               
                             </tbody>
                         </table>
-                    </div>
                 </div>
             </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </x-admin-layout>
