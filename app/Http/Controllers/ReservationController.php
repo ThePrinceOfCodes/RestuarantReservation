@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReservationStoreRequest;
+use App\Models\Table;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReservationStoreRequest;
 
 class ReservationController extends Controller
 {
@@ -28,7 +29,8 @@ class ReservationController extends Controller
     public function create()
     {
         //
-        return view('admin.reservations.create');
+        $tables = Table::all();
+        return view('admin.reservations.create', compact('tables'));
 
     }
 

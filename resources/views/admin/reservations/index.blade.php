@@ -58,6 +58,22 @@
                                     </td><td class="px-6 py-4">
                                         {{ $reservation->guest_number }}
                                     </td>
+                                    <td class="px-6 py-4">
+                                            <div class="flex space-x-2">
+                                                <a href="{{ route('admin.reservations.edit', $reservation->id)}}" class="px-4 py-2 bg-green-300 hover:bg-green-500 text-white dark:tex-gray-200 rounded-lg">
+                                                    Edit
+                                                </a>
+                                                <form
+                                                    method="POST",
+                                                    action=" {{ route('admin.reservations.destroy',$reservation->id) }}"
+                                                    onsubmit=" return confirm('are you sure')"
+                                                >
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="px-4 py-2 bg-red-300 hover:bg-red-500 text-white dark:tex-gray-200 rounded-lg">Delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
                                 </tr>
                                 @endforeach                                                               
                             </tbody>
