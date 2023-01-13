@@ -47,6 +47,22 @@
                                         <td class="px-6 py-4">
                                             {{$menu->price}}
                                         </td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex space-x-2">
+                                                <a href="{{ route('admin.menus.edit', $menu->id)}}" class="px-4 py-2 bg-green-300 hover:bg-green-500 text-white dark:tex-gray-200 rounded-lg">
+                                                    Edit
+                                                </a>
+                                                <form
+                                                    method="POST",
+                                                    action=" {{ route('admin.menus.destroy',$menu->id) }}"
+                                                    onsubmit=" return confirm('are you sure')"
+                                                >
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="px-4 py-2 bg-red-300 hover:bg-red-500 text-white dark:tex-gray-200 rounded-lg">Delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach                              
                             </tbody>

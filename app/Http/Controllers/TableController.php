@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Table;
 use Illuminate\Http\Request;
+use App\Http\Requests\TableStoreRequest;
 
 class TableController extends Controller
 {
@@ -37,11 +38,12 @@ class TableController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TableStoreRequest $request)
     {
         //
        Table::create([
             'location' => $request->location,
+            'status' => $request->status,
             'name' => $request->name,
             'guest_number' => $request->guest_number,
         ]);
@@ -58,6 +60,7 @@ class TableController extends Controller
     public function show(Table $table)
     {
         //
+
     }
 
     /**
@@ -69,6 +72,7 @@ class TableController extends Controller
     public function edit(Table $table)
     {
         //
+        return view('admin.tables.edit', compact('table'));
     }
 
     /**
@@ -78,9 +82,16 @@ class TableController extends Controller
      * @param  \App\Models\Table  $table
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Table $table)
+    public function update(TableStoreRequest $request, Table $table)
     {
-        //
+        $table->update([
+            'name' => $request->name,
+            'guest_number' => $request->guest_number,
+            'status' => $request->status,
+            'location' => $request->location
+        ]);
+
+        return to_route(('admin.tables.index'));
     }
 
     /**
@@ -92,5 +103,8 @@ class TableController extends Controller
     public function destroy(Table $table)
     {
         //
+        $table->delete();
+        return to_route(('admin.tables.index'));
+
     }
 }
