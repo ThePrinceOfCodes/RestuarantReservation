@@ -10,11 +10,11 @@ class ReservationsController extends Controller
     //
     public function stepOne()
     {
-        return view('frontend/index');
+        return view('frontend/reservations/step-one');
     }
 
     public function stepTwo()
     {
-        return view('frontend/index');
+        return view('frontend/reservations/step-two');
     }
 }

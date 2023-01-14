@@ -10,8 +10,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
 use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
 use App\Http\Controllers\Frontend\ReservationsController as FrontendReservationsController;
-
-
+use App\Http\Controllers\frontend\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +23,7 @@ use App\Http\Controllers\Frontend\ReservationsController as FrontendReservations
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/categories', [FrontendCategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{category}', [FrontendCategoryController::class, 'show'])->name('categories.show');
