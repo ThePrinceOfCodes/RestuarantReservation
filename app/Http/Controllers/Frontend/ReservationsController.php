@@ -8,4 +8,13 @@ use Illuminate\Http\Request;
 class ReservationsController extends Controller
 {
     //
+    public function stepOne()
+    {
+        return view('frontend/index');
+    }
+
+    public function stepTwo()
+    {
+        return view('frontend/index');
+    }
 }
