@@ -53,7 +53,7 @@ class ReservationController extends Controller
 
         $request_date = Carbon::parse($request->res_date);
         foreach($table->reservations as $res){
-            if($res->res_date->format('y-m-d') == $request->res_date){
+            if($res->res_date->format('y-m-d') == $request_date){
                 return back()->with('warning','table not available for the chosen date');
             }
         }
@@ -83,7 +83,7 @@ class ReservationController extends Controller
     public function edit(Reservation $reservation)
     {
         //
-        $tables = Table::all();
+        $tables = Table::where('status', TableStatus::Available)->get();
         return view('admin.reservations.edit', compact('reservation','tables'));
     }
 
@@ -94,9 +94,24 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reservation $reservation)
+    public function update(ReservationStoreRequest $request, Reservation $reservation)
     {
-        //
+        $table = Table::findOrFail($request->table_id);
+        if($request->guest_number > $table->guest_number){
+            return back()->with('warning','please select a table that matches your guests number');
+        }
+
+        $request_date = Carbon::parse($request->res_date);
+        $reservations = $table->reservations()->where('id','!=', $reservation->id)->get();
+        foreach($reservations as $res){
+            if($res->res_date->format('y-m-d') == $request_date){
+                return back()->with('warning','table not available for the chosen date');
+            }
+        }
+
+        $reservation->update($request->validated());
+
+        return to_route(('admin.reservations.index'))->with('success','reservations updated successfully');
     }
 
     /**
