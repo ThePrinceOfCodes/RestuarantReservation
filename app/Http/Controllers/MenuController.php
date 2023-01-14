@@ -127,6 +127,7 @@ class MenuController extends Controller
     {
         //
         Storage::delete($menu->image);
+        $menu->category()->detach();
         $menu->delete();
         return to_route(('admin.menus.index'))->with('destroy','Menu delete successfully');
     }
