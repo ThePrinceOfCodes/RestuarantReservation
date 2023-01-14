@@ -56,7 +56,7 @@
                         <select name="table_id" class="form block w-full mt-1">
                             @foreach ($tables as $table)
                                 <option value="{{ $table->id }}">
-                                    {{ $table->name }}
+                                    {{ $table->name }} ({{ $table->guest_number }} guests)
                                 </option>
                             @endforeach
                         </select>
