@@ -29,7 +29,7 @@ Route::get('/', function () {
 });
 
 Route::get('/categories', [FrontendCategoryController::class, 'index'])->name('categories.index');
-Route::get('/categories/{category}', [FrontendCategoryController::class, 'show'])->name('category.show');
+Route::get('/categories/{category}', [FrontendCategoryController::class, 'show'])->name('categories.show');
 Route::get('/menus', [FrontendmenuController::class, 'index'])->name('menus.index');
 Route::get('/reservations/step-one', [FrontendReservationsController::class, 'stepOne'])->name('reservations.step.one');
 Route::get('/reservations/step-two', [FrontendReservationsController::class, 'stepTwo'])->name('reservations.step.two');
